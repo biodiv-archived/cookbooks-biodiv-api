@@ -1,0 +1,43 @@
+#DB related
+db.url=jdbc:postgresql://localhost:5432/<%= node['biodiv']['database'] %>
+db.username=<%= node['biodiv']['database-user'] %>
+db.password=<%= node['biodiv']['database-password'] %>
+
+#ES related
+es.url=http://localhost:9200
+
+#Map related
+#geoserver.url=http://localhost:6792/geoserver/
+
+#AUTH RELATED
+fbId=<%= node.biodiv.facebookAppId %>
+fbSecret=<%= node.biodiv.facebookAppSecret %>
+fbCallback=https://<%= node.biodiv.servername %>/biodiv-api/login/callback?client_name=facebookClient
+
+googleId=<%= node["oauth"]["google"]["key"] %>
+googleSecret=<%= node["oauth"]["google"]["secret"] %>
+googleCallback=https://<%= node.biodiv.servername %>/biodiv-api/login/callback?client_name=google2Client
+
+accessToken_cookieName=BAToken
+headerName=X-AUTH-TOKEN
+
+checkAuthUrl=https://<%= node.biodiv.servername %>/openId/checkauth
+createSocialAccountUrl=https://<%= node.biodiv.servername %>/openId/createSocialAccountFromProfile
+
+#Naksha URL
+nakshaUrl=http://localhost:8080/naksha
+naksha.url=http://localhost:8080/naksha
+
+#download filepath
+download.filePath=<%= node['biodiv']['data'] %>
+
+#Mail related
+mail.hostName=<%= node.biodiv.smtphost %>
+mail.port=<%= node.biodiv.smtpport %>
+mail.senderEmail=<%= node.biodiv.senderEmail %>
+mail.password=
+mail.bcc=<%= node.biodiv.bccList %>
+mail.download.subject=Download request
+mail.download.message=Data download request has been processed. The download link will be visible once you log in to your profile.
+mail.sendToFollowers=true
+
