@@ -57,7 +57,7 @@ template "#{node['nginx']['dir']}/include.d/#{node.biodivApi.appname}" do
 end
 
 # install grails
-include_recipe "gradle"
+include_recipe "gradle::tarball"
 gradleCmd = "JAVA_HOME=#{node.java.java_home} gradle"
 biodivApiRepo = "#{Chef::Config[:file_cache_path]}/biodiv-api"
 additionalConfig = "#{node.biodivApi.additional_config}"
