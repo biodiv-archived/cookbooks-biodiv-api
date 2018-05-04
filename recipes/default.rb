@@ -21,7 +21,6 @@
 include_recipe "biodiv-api::packages"
 include_recipe "elasticsearch"
 include_recipe "redis"
-include_recipe "nodejs::nodejs_from_package"
 
 # setup geoserver
 include_recipe "geoserver-tomcat"
@@ -59,7 +58,7 @@ end
 
 # install grails
 include_recipe "gradle::tarball"
-gradleCmd = "JAVA_HOME=#{node.java.java_home} gradle"
+gradleCmd = "JAVA_HOME=#{node.java.java_home} /usr/local/gradle/bin/gradle"
 biodivApiRepo = "#{Chef::Config[:file_cache_path]}/biodiv-api"
 additionalConfig = "#{node.biodivApi.additional_config}"
 
