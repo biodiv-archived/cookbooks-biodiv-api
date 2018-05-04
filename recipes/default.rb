@@ -21,6 +21,7 @@
 include_recipe "biodiv-api::packages"
 include_recipe "elasticsearch"
 include_recipe "redis"
+include_recipe "nodejs::nodejs_from_package"
 
 # setup geoserver
 include_recipe "geoserver-tomcat"
@@ -116,7 +117,7 @@ bash "compile_biodivApi" do
   code <<-EOH
   cd #{node.biodivApi.extracted}
   yes | export BIODIV_API_CONFIG_LOCATION=#{additionalConfig}
-  yes | #{gradle} war  #{node.biodivApi.war}
+  yes | #{gradleCmd} war  #{node.biodivApi.war}
   chmod +r #{node.biodivApi.war}
   EOH
 
@@ -136,7 +137,7 @@ bash "copy additional config" do
 #  chmod +r #{node.biodiv.war}
 #  #rm -rf /tmp/biodiv-temp
 #  EOH
-  notifies :enable, "cerner_tomcat[#{node.biodivApi.tomcat_instance}]", :immediately
+  notifies :enable, "cerner_tomcat[#{node.biodiv.tomcat_instance}]", :immediately
   action :nothing
 end
 
@@ -147,7 +148,7 @@ template additionalConfig do
   notifies :run, "bash[copy additional config]"
 end
 
-cerner_tomcat node.biodivApi.tomcat_instance do
+cerner_tomcat node.biodiv.tomcat_instance do
   version "7.0.54"
   web_app "biodiv-api" do
     source "file://#{node.biodivApi.war}"

@@ -11,7 +11,7 @@ es.url=http://localhost:9200
 
 #AUTH RELATED
 fbId=<%= node.biodiv.facebookAppId %>
-fbSecret=<%= node.biodiv.facebookAppSecret %>
+fbSecret=<%= node.biodiv.facebookSecret %>
 fbCallback=https://<%= node.biodiv.servername %>/biodiv-api/login/callback?client_name=facebookClient
 
 googleId=<%= node["oauth"]["google"]["key"] %>
@@ -36,7 +36,7 @@ mail.hostName=<%= node.biodiv.smtphost %>
 mail.port=<%= node.biodiv.smtpport %>
 mail.senderEmail=<%= node.biodiv.senderEmail %>
 mail.password=
-mail.bcc=<%= node.biodiv.bccList %>
+mail.bcc=<%= node.biodiv.bccEmailList %>
 mail.download.subject=Download request
 mail.download.message=Data download request has been processed. The download link will be visible once you log in to your profile.
 mail.sendToFollowers=true
