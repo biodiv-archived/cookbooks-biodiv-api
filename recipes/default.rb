@@ -90,7 +90,7 @@ bash 'unpack biodivApi' do
   fi
 
   EOH
-  not_if "test -d #{node.biodivapi.extracted}"
+  not_if "test -d #{node.biodivApi.extracted}"
   notifies :create, "template[#{additionalConfig}]",:immediately
   #notifies :run, "bash[copy static files]",:immediately
 end
