@@ -17,48 +17,48 @@
 # limitations under the License.
 #
 
-# setup solr
 include_recipe "biodiv-api::packages"
 include_recipe "elasticsearch"
 include_recipe "redis"
 
 # setup geoserver
-include_recipe "geoserver-tomcat"
-include_recipe "geoserver-tomcat::postgresql"
+#include_recipe "geoserver-tomcat"
+#include_recipe "geoserver-tomcat::postgresql"
 
 #setup fileops 
-include_recipe "fileops"
+#include_recipe "fileops"
 
 # setup biodiversity nameparser
-include_recipe "biodiversity-nameparser"
+#include_recipe "biodiversity-nameparser"
 
 # setup biodiv database
-include_recipe "biodiv::database"
+#include_recipe "biodiv::database"
 
 # install nginx
-include_recipe "nginx"
+#include_recipe "nginx"
 
 # setup postfix
-include_recipe "postfix"
+#include_recipe "postfix"
 
 # create includes folder
-directory "#{node['nginx']['dir']}/include.d/" do
-  owner node.nginx.user
-  group node.nginx.group
-  action :create
-end
+#directory "#{node['nginx']['dir']}/include.d/" do
+#  owner node.nginx.user
+#  group node.nginx.group
+#  action :create
+#end
 
 #  setup nginx biodiv conf
-template "#{node['nginx']['dir']}/include.d/#{node.biodivApi.appname}" do
-  source "nginx-biodiv-api.erb"
-  owner node.nginx.user
-  group node.nginx.group
-  notifies :restart, resources(:service => "nginx"), :immediately
-end
+#template "#{node['nginx']['dir']}/include.d/#{node.biodivApi.appname}" do
+#  source "nginx-biodiv-api.erb"
+#  owner node.nginx.user
+#  group node.nginx.group
+#  notifies :restart, resources(:service => "nginx"), :immediately
+#end
 
 # install grails
-include_recipe "gradle::tarball"
-gradleCmd = "JAVA_HOME=#{node.java.java_home} /usr/local/gradle/bin/gradle"
+include_recipe "gradle"
+gradleCmd = "JAVA_HOME=#{node.java.java_home} #{node.biodivApi.extracted}/gradlew"
+#"JAVA_HOME=#{node.java.java_home} /usr/local/gradle/bin/gradle"
 biodivApiRepo = "#{Chef::Config[:file_cache_path]}/biodiv-api"
 additionalConfig = "#{node.biodivApi.additional_config}"
 
@@ -116,7 +116,7 @@ bash "compile_biodivApi" do
   code <<-EOH
   cd #{node.biodivApi.extracted}
   yes | export BIODIV_API_CONFIG_LOCATION=#{additionalConfig}
-  yes | #{gradleCmd} war  #{node.biodivApi.war}
+  yes | #{gradleCmd} war
   chmod +r #{node.biodivApi.war}
   EOH
 
