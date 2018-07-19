@@ -3,6 +3,11 @@ db.url=jdbc:postgresql://localhost:5432/<%= node['biodiv']['database'] %>
 db.username=<%= node['biodiv']['database-user'] %>
 db.password=<%= node['biodiv']['database-password'] %>
 
+facebookUrl=<%= node['biodiv']['facebookUrl']%>
+twitterUrl=<%= node['biodiv']['twitterUrl']%>
+googlePlusUrl=<%= node['biodiv']['googlePlusUrl']%>
+feedbackFormUrl=<%= node['biodiv']['feedbackFormUrl']%>
+
 #ES related
 es.url=http://localhost:9200
 
@@ -17,12 +22,14 @@ fbCallback=https://<%= node.biodiv.servername %>/biodiv-api/login/callback?clien
 googleId=<%= node["oauth"]["google"]["key"] %>
 googleSecret=<%= node["oauth"]["google"]["secret"] %>
 googleCallback=https://<%= node.biodiv.servername %>/biodiv-api/login/callback?client_name=google2Client
+googleRecaptchaSecret=<%= node["biodiv"]["recaptcha"]["secret"]
 
 accessToken_cookieName=BAToken
 headerName=X-AUTH-TOKEN
 
-checkAuthUrl=https://<%= node.biodiv.servername %>/openId/checkauth
-createSocialAccountUrl=https://<%= node.biodiv.servername %>/openId/createSocialAccountFromProfile
+checkAuthUrl=https://<%= node.biodiv.servername %>/login/checkauth
+createSocialAccountUrl=https://<%= node.biodiv.servername %>/register
+
 
 #Naksha URL
 nakshaUrl=http://localhost:8080/naksha
@@ -30,6 +37,14 @@ naksha.url=http://localhost:8080/naksha
 
 #download filepath
 download.filePath=<%= node['biodiv']['data'] %>
+
+#Domain
+serverUrl=https://<%= node.biodiv.servername %>
+siteName=India Biodiversity Portal
+contextPath=biodiv-api
+
+#User   
+user.defaultRoleNames=ROLE_USER
 
 #Mail related
 mail.hostName=<%= node.biodiv.smtphost %>
