@@ -1,12 +1,12 @@
 #DB related
-db.url=jdbc:postgresql://localhost:5432/<%= node['biodiv']['database'] %>
-db.username=<%= node['biodiv']['database-user'] %>
-db.password=<%= node['biodiv']['database-password'] %>
+db.url=jdbc:postgresql://localhost:5432/"<%= node['biodiv']['database'] %>"
+db.username="<%= node['biodiv']['database-user'] %>"
+db.password="<%= node['biodiv']['database-password'] %>"
 
-facebookUrl=<%= node['biodiv']['facebookUrl']%>
-twitterUrl=<%= node['biodiv']['twitterUrl']%>
-googlePlusUrl=<%= node['biodiv']['googlePlusUrl']%>
-feedbackFormUrl=<%= node['biodiv']['feedbackFormUrl']%>
+facebookUrl="<%= node['biodiv']['facebookUrl']%>"
+twitterUrl="<%= node['biodiv']['twitterUrl']%>"
+googlePlusUrl="<%= node['biodiv']['googlePlusUrl']%>"
+feedbackFormUrl="<%= node['biodiv']['feedbackFormUrl']%>"
 
 #ES related
 es.url=http://localhost:9200
@@ -15,20 +15,20 @@ es.url=http://localhost:9200
 #geoserver.url=http://localhost:6792/geoserver/
 
 #AUTH RELATED
-fbId=<%= node.biodiv.facebookAppId %>
-fbSecret=<%= node.biodiv.facebookSecret %>
-fbCallback=https://<%= node.biodiv.servername %>/biodiv-api/login/callback?client_name=facebookClient
+fbId="<%= node.biodiv.facebookAppId %>"
+fbSecret="<%= node.biodiv.facebookSecret %>"
+fbCallback=https://"<%= node.biodiv.servername %>"/biodiv-api/login/callback?client_name=facebookClient
 
-googleId=<%= node["oauth"]["google"]["key"] %>
-googleSecret=<%= node["oauth"]["google"]["secret"] %>
-googleCallback=https://<%= node.biodiv.servername %>/biodiv-api/login/callback?client_name=google2Client
-googleRecaptchaSecret=<%= node["biodiv"]["recaptcha"]["secret"]
+googleId="<%= node["oauth"]["google"]["key"] %>"
+googleSecret="<%= node["oauth"]["google"]["secret"] %>"
+googleCallback=https://"<%= node.biodiv.servername %>"/biodiv-api/login/callback?client_name=google2Client
+googleRecaptchaSecret="<%= node["biodiv"]["recaptcha"]["secret"] %>"
 
 accessToken_cookieName=BAToken
 headerName=X-AUTH-TOKEN
 
-checkAuthUrl=https://<%= node.biodiv.servername %>/login/checkauth
-createSocialAccountUrl=https://<%= node.biodiv.servername %>/register
+checkAuthUrl=https://"<%= node.biodiv.servername %>"/login/checkauth
+createSocialAccountUrl=https://"<%= node.biodiv.servername %>"/register
 
 
 #Naksha URL
@@ -36,10 +36,10 @@ nakshaUrl=http://localhost:8080/naksha
 naksha.url=http://localhost:8080/naksha
 
 #download filepath
-download.filePath=<%= node['biodiv']['data'] %>
+download.filePath="<%= node['biodiv']['data'] %>"
 
 #Domain
-serverUrl=https://<%= node.biodiv.servername %>
+serverUrl=https://"<%= node.biodiv.servername %>"
 siteName=India Biodiversity Portal
 contextPath=biodiv-api
 
@@ -47,11 +47,11 @@ contextPath=biodiv-api
 user.defaultRoleNames=ROLE_USER
 
 #Mail related
-mail.hostName=<%= node.biodiv.smtphost %>
-mail.port=<%= node.biodiv.smtpport %>
-mail.senderEmail=<%= node.biodiv.senderEmail %>
+mail.hostName="<%= node.biodiv.smtphost %>"
+mail.port="<%= node.biodiv.smtpport %>"
+mail.senderEmail="<%= node.biodiv.senderEmail %>"
 mail.password=
-mail.bcc=<%= node.biodiv.bccEmailList %>
+mail.bcc="<%= node.biodiv.bccEmailList %>"
 mail.download.subject=Download request
 mail.download.message=Data download request has been processed. The download link will be visible once you log in to your profile.
 mail.sendToFollowers=true
