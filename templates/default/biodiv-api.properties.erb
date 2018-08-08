@@ -19,10 +19,10 @@ fbId="<%= node.biodiv.facebookAppId %>"
 fbSecret="<%= node.biodiv.facebookSecret %>"
 fbCallback=https://"<%= node.biodiv.servername %>"/biodiv-api/login/callback?client_name=facebookClient
 
-googleId="<%= node["oauth"]["google"]["key"] %>"
-googleSecret="<%= node["oauth"]["google"]["secret"] %>"
+googleId="<%= node['oauth']['google']['key'] %>"
+googleSecret="<%= node['oauth']['google']['secret'] %>"
 googleCallback=https://"<%= node.biodiv.servername %>"/biodiv-api/login/callback?client_name=google2Client
-googleRecaptchaSecret="<%= node["biodiv"]["recaptcha"]["secret"] %>"
+googleRecaptchaSecret="<%= node['biodiv']['recaptcha']['secret'] %>"
 
 accessToken_cookieName=BAToken
 headerName=X-AUTH-TOKEN
